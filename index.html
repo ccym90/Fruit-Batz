@@ -1,0 +1,88 @@
+<html>
+     <title> Fruit Batz</title> 
+   
+        <link rel="stylesheet" href="css/style.css">
+        <body>
+        <div class ="gameboard"></div>
+            <canvas id="myCanvas" width="1442" height="877"
+            style="border:1px solid #000000;"></canvas>
+        <div class ="enter1"></div> 
+        <div class ="enterp2"></div>
+        <div class ="scoreBoardp1"></div>
+        <div class ="scoreBoardp2"></div>
+        <div class ="fruit"></div>
+        <div class ="coffee"></div>
+        <div class ="pizza"></div>
+        <div class ="doughnut"></div>
+        <div class ="p1"></div>
+        <div class ="p2"></div>
+        <div class ="restartButton"></div>
+        </body>
+        
+        <script src="gameboard.js"></script>
+        <script src="enterp1.js"></script>
+        <script src="enterp2.js"></script>
+        <script src="scoreboard1.js"></script>
+        <script src="scoreboard2.js"></script>
+        <script src="fruit.js"></script>
+        <script src="coffee.js"></script>
+        <script src="pizza.js"></script>
+        <script src="doughnut.js"></script>
+        <script src="p1.js"></script>
+        <script src="p2.js"></script>
+        <script src="restartbutton.js"></script>
+        
+        
+        
+    <style>    
+      html, body {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+      
+      #ball {
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+        background-color: blue;
+      }
+      
+      #gameboard {
+        height: 100%;
+        width: 100%;
+        
+      }
+    
+    var p1Piece;
+
+function startGame() {
+    gameArea.start();
+    p1 = new component (30, 30, "blue", 10, 120);
+    
+} 
+
+function component (width, height, color, x, y) {
+    this.width = width;
+    this.height = height; 
+    this.x = x;
+    this.y = y;
+    ctx = gameArea.context;
+    ctx.fillStyle = color;
+    ctx.fillRect(this.x, this.y, this.width, this.height)
+}
+
+    </style>
+
+    <div id="gameboard">
+      <div id="ball"></div>
+    </div>
+    <script src="engine.js" ></script>
+</html>
