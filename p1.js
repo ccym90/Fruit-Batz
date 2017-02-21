@@ -1,18 +1,25 @@
-var p1Piece;
+var player1= document.getElementById('p1');
 
-function startGame() {
-    gameArea.start();
-    p1Piece = new component (30, 30, "blue", 10, 120);
-    
-} 
+var p1left = 0;
 
-function component (width, height, color, x, y) {
-    this.width = width;
-    this.height = height; 
-    this.x = x;
-    this.y = y;
-    ctx = gameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height)
-}
+document.addEventListener('keydown', function(e) {
+    console.log('keypressed');                      
+     switch(e.keyCode){
+        case 37:
+            p1left -=15;
+            p1.style.left = p1left + 'px';
+            break;
+        case 39:
+            p1left +=15;
+            p1.style.left = p1left + 'px';
+            break;
+        default:
+    }
+});
+
+var player1RightSide = player.x + player.width;
+
+if( player1RightSide >= 200 );
+
+if( player1RightSide >= 200 ) { player.x = 190; } 
 
