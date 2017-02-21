@@ -76,7 +76,7 @@ document.addEventListener('keyup', function(e) {
 });
 
 
-function edgeDetect(HTMLCanvasElement){
+function edgeDetect(){
   
     if(y <= 50){
       y = 50;
@@ -123,7 +123,7 @@ function autoBounce(){
     }
 }
 
-function render(){
+/*function render(){
   
   if(keyUP || motion.up){
     y -= speed;
@@ -146,7 +146,7 @@ function render(){
   
   ball.style.top = y;
   ball.style.left = x;
-}
+}*/
 
 (function animloop(){
   requestAnimFrame(animloop);
