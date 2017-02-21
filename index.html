@@ -6,10 +6,9 @@
         
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="engine.js" ></script>
     </head>    
         <body>         
-                <div class ="gameboard">
+                <div id="gameboard">
                         <div class="start">
                             <img id="startbutton" src="Images/start-game-button.gif">
                         </div>
@@ -28,21 +27,19 @@
                             <div id="doughnuts"></div>
                         </div>
                         <div class ="playerSpace">
-                            <img id="p1" src="Images/p1right.png">
-                            <img id="p2" src="Images/p2left.png">
+                            <img id="player1" src="Images/p1right.png">
+                            <img id="player2" src="Images/p2left.png">
                         </div>
                         <div class ="restartButton"></div>
                 </div>
+
+                <audio loop id="audio">
+                    <source src="music/La%20Roux%20-%20Bulletproof%20%5BInstrumental%5D%20W-Lyric.mp3.crdownload" type="audio/mp3">
+                </audio>
+
+
+                <script src="./js/food.js"></script>
+                <script src="./js/Player.js"></script>
+                <script src="./js/gameboard.js"></script>
         </body>
-        
-        <audio loop id="audio">
-          <source src="music/La%20Roux%20-%20Bulletproof%20%5BInstrumental%5D%20W-Lyric.mp3.crdownload" type="audio/mp3">
-        </audio>
-        <script src="gameboard.js"></script>
-        <script src="enterplayer.js"></script>
-        <script src="scoreboard.js"></script>
-        <script src="objects.js"></script>
-        <script src="p1.js"></script>
-        <script src="p2.js"></script>
-        <script src="start.js"></script>
 </html>

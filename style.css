@@ -22,10 +22,9 @@ body {
 
 }
 
-#p1{
-    image
-    height: 10%%;
-    width: 10%;
+#player1 {
+    height: 10%;
+    width: auto;
     left: 0;
     bottom: 0;
     position: absolute;
@@ -34,10 +33,9 @@ body {
     
 }
 
-#p2 {
-    image
+#player2 {
     height: 10%;
-    width: 10%;
+    width: auto;
     right: 0;
     bottom: 0;
     position: absolute; 
@@ -71,4 +69,12 @@ body {
       display: inline-block;
       background: rgba(255,255,255,0.1); 
     
+}
+
+
+.food {
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    position: absolute;
 }
