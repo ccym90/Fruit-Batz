@@ -1,6 +1,3 @@
-    var player1 = new Player("player1");
-    var player2 = new Player("player2");
-
 var GameBoard = function(){
 
     /*
@@ -8,27 +5,20 @@ var GameBoard = function(){
      */
 
     var gravity = 2;
-    
-    
-    /*
-     *  set the intial foods position to above screen height
-     */
-    var y = window.innerHeight / -10;
-    
 
     /*
      *  Game Environment
      */
-    var height = window.innerHeight;
-    var width = window.innerWidth;
+    this.frames = 0;
+    this.player1 = new Player("player1");
+    this.player2 = new Player("player2");
 
-    player1 = new Player("player1");
-    player2 = new Player("player2");
-    
-    document.getElementsByName("foods")
-    
-    
-debugger;
+    var player1Points = 0;
+    var player2Points = 0;
+
+    this.foods = [];
+
+    var self = this;
 
     /*
      *  Event listeners
@@ -83,68 +73,96 @@ debugger;
             default:
         }
     });
-    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    this.dropFood = function(){
+
+        if( !( self.frames%120 == 0) ){
+            return;
+        }
+
+        this.foods.push(new Food());
+    };
+
+
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     
-        function collision() { 
-            
-          // Are all elements availible ?
-      if(!(food.foodElement && player1.playerElement)){
-        return;
-      }
-      // Find elements 
-      var foodCo = food.foodElement.getClientRects()[0];
-      var player1Co = document.getElementById('player1').getClientRects()[0];
-    
-            
-        // Calculate if there a collision
-      if(foodCo.left < player1Co.left + player1Co.width &&
-         foodCo.left + player1Co.width > player1Co.left &&
-         foodCo.top < player1Co.top + player1Co.height &&
-         foodCo.height + foodCo.top > player1Co.top) {
+    function collision() {
 
-         console.log("collision detected");    
-      }
-            
-    if(!(food.foodElement && player2.playerElement)){
-        return;
-    }
-    
-          // Find elements 
-      var foodCo = food.foodElement.getClientRects()[0];
-      var player2Co = document.getElementById('player2').getClientRects()[0];
-    
-            
-        // Calculate if there a collision
-      if(foodCo.left < player2Co.left + player2Co.width &&
-         foodCo.left + player2Co.width > player2Co.left &&
-         foodCo.top < player2Co.top + player2Co.height &&
-         foodCo.height + foodCo.top > player2Co.top) {
+        var player1Co = document.getElementById('player1').getClientRects()[0];
+        var player2Co = document.getElementById('player2').getClientRects()[0];
 
-         console.log("collision detected2");    
+        self.foods.forEach(function(food, index) {
+
+            if(food.foodElement.getClientRects().length == 0 ){
+                return;
             }
-        }
+
+            var foodRect = food.foodElement.getClientRects()[0];
+
+            if(foodRect.left < player1Co.left + player1Co.width &&
+                foodRect.left + player1Co.width > player1Co.left &&
+                foodRect.top < player1Co.top + player1Co.height &&
+                foodRect.height + foodRect.top > player1Co.top) {
+
+                var foodEaten = food.eatFood();
+
+                if(foodEaten.name == "coffee" ){
+                    self.player1.speed += foodEaten.powerup;
+                    console.log("Player 1: Yay coffee");
+                }else{
+                    player1Points += foodEaten.points;
+                }
+                self.foods.splice(index,1);
+
+                console.log("Player 1 got the" + foodEaten.name);
+                console.log(player1Points);
+
+            }
+
+
+            if(foodRect.left < player2Co.left + player2Co.width &&
+                foodRect.left + player2Co.width > player2Co.left &&
+                foodRect.top < player2Co.top + player2Co.height &&
+                foodRect.height + foodRect.top > player2Co.top) {
+
+                var foodEaten = food.eatFood();
+
+                if(foodEaten.name == "coffee" ){
+                    self.player2.speed += foodEaten.powerup;
+                    console.log("Player 2: Yay coffee");
+                }else{
+                    player2Points += foodEaten.points;
+                }
+                self.foods.splice(index,1);
+
+                console.log("Player 2 got the" + foodEaten.name);
+                console.log(player2Points);
+            }
+
+        });
+    }
     
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
     function render(){
-        console.log("game loop");
 
-        player1.render(movement);
-        player2.render(movement);
+        self.frames++;
 
-          foods.render(gravity);
-//        food1.render(gravity);
-//        food2.render(gravity);
-//        food3.render(gravity);
-//        food4.render(gravity);
-//        food5.render(gravity);
-//        food6.render(gravity);
-//        food7.render(gravity);
-    
-        
-        
+        self.player1.render(movement);
+        self.player2.render(movement);
+
+        self.foods.forEach(function(food, index) {
+           food.render(gravity);
+
+           if( food.edgeDetection() ){
+               self.foods.slice(index,1);
+           }
+        });
+
+        self.dropFood();
         collision();
     }
 

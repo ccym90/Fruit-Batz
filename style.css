@@ -73,9 +73,50 @@ body {
 
 
 .food {
-    height: 30px;
-    width: 30px;
-    background-color: red;
+    height: 50px;
+    width: 50px;
     position: absolute;
 }
 
+
+.pineapple {
+    background-image: url("./Images/pineapple.png");
+    background-size: cover;
+}
+
+
+.pizza {
+    background-image: url("./Images/pizza.png");
+    background-size: cover;
+}
+
+.doughnut {
+    background-image: url("./Images/doughnut.png");
+    background-size: cover;
+}
+
+
+.strawberry {
+    background-image: url("./Images/strawberry.png");
+    background-size: cover;
+}
+
+.cherry {
+    background-image: url("./Images/cherries.png");
+    background-size: cover;
+}
+
+.grapes {
+    background-image: url("./Images/grapes.png");
+    background-size: cover;
+}
+
+.raspberry {
+    background-image: url("./Images/raspberry.png");
+    background-size: cover;
+}
+
+.coffee {
+    background-image: url("./Images/coffee.png");
+    background-size: cover;
+}

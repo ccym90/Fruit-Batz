@@ -4,7 +4,7 @@ var Player = function(playerNumber){
     /*
      *  Game variables
      */
-    var speed = 10;
+    this.speed = 10;
 
     /*
      *  Game Environment
@@ -30,11 +30,11 @@ var Player = function(playerNumber){
     function move(movement){
 
         if(movement[player].left){
-            position.x -= speed;
+            position.x -= self.speed;
         }
 
         if(movement[player].right){
-            position.x += speed;
+            position.x += self.speed;
         }
 
         if(position.x < 0){
