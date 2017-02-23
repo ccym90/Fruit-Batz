@@ -13,7 +13,10 @@ var Player = function(playerNumber){
     var position = {
         "x": 100
     };
-    var playerElement = document.getElementById(player);
+    
+    var self = this;
+    
+    this.playerElement = document.getElementById(player);
 
 
     if(player == "player1"){
@@ -47,7 +50,7 @@ var Player = function(playerNumber){
     this.render = function(movement) {
 
         move(movement);
-        playerElement.style.left = position.x + "px";
+        self.playerElement.style.left = position.x + "px";
 
     }
 }
