@@ -1,33 +1,37 @@
 var Food = function(type){
 
+/////////////////////////////////////////put foods into array assigning points and power up///////////////////////////
+/////////////////////////////////////////this allows engine to choose random fruit to fall////////////////////////////
     var foodTypes = [
-                        {"name":"pineapple", "points": 3},
-                        {"name":"pizza", "points": 4},
-                        {"name":"doughnut", "points": 5},
-                        {"name":"strawberry", "points": 6},
-                        {"name":"cherry", "points": 7},
-                        {"name":"grapes", "points": 8},
-                        {"name":"raspberry", "points": 9},
-                        {"name": "coffee", "powerup":5}
+                        {"name":"pineapple", "points": 5},
+                        {"name":"pizza", "powerup":-3},
+                        {"name":"doughnut", "points":6},
+                        {"name":"strawberry", "points": 4},
+                        {"name":"cherry", "points": 3},
+                        {"name":"grapes", "points": 1},
+                        {"name":"raspberry", "points": 2},
+                        {"name": "coffee", "powerup":6}
                     ];
 
-    this.currentFoodType = null;
+    this.currentFoodType = null; /// this. making scope global 
 
     var position = {
         x: 0,
-        y: -5
+        y: -5,      //// makes food fall from above the screen window
     };
 
-    this.foodElement = null;
+    this.foodElement = null; //null because it is defined later
     
     var self = this;  //bind the "this" to refer to food
 
+    this.foodGravity = Math.ceil(Math.random() * 5); 
+    // gravity chosen at random number rounded up using math.ceil - if floor used potentaily choose 0 so wont fall
 
-    this.foodGravity = Math.ceil(Math.random() * 3);
-
+    
     /*
-     * eat the food
+     * eat the food - remove the html "div" on collision make food disappear
      */
+    
     this.eatFood = function () {
         self.foodElement.remove();
         return this.currentFoodType;
@@ -35,7 +39,7 @@ var Food = function(type){
 
 
     /*
-     * If the food leaves the screen
+     * If the food falls below the screen inner Height, the html element will be removed 
      */
     this.edgeDetection = function() {
 
@@ -57,7 +61,7 @@ var Food = function(type){
     // This will only run once
     function init(){
 
-        self.currentFoodType = foodTypes[Math.floor(Math.random()*foodTypes.length)];
+        self.currentFoodType = foodTypes[Math.floor(Math.random()*foodTypes.length)]; //chosing a random food from the above array
 
         self.foodElement = document.createElement("div");
         self.foodElement.classList.add("food");
