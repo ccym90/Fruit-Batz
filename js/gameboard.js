@@ -1,5 +1,5 @@
 //function addText(){
-//    document.getElementById('#p1sb').innerHTML = document.getElementById('#name').value;
+//    document.getElementById('#p1sb').innerHTML = document.getElementById('#p1name').value;
 //}
 
 

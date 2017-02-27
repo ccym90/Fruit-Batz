@@ -1,6 +1,6 @@
 var Food = function(type){
 
-/////////////////////////////////////////put foods into array assigning points and power up///////////////////////////
+/////////////////////////////////////////put foods into array) of objects assigning points and power up///////////////////////////
 /////////////////////////////////////////this allows engine to choose random fruit to fall////////////////////////////
     var foodTypes = [
                         {"name":"pineapple", "points": 5},
