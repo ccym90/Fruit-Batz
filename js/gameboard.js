@@ -94,7 +94,6 @@ var GameBoard = function(){
         if( !( self.frames%60 == 0) ){
             return;
         }
-
         this.foods.push(new Food());
     };
 
