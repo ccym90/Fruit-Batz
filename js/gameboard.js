@@ -1,5 +1,5 @@
 //function addText(){
-//    document.getElementById('#p1sb').innerHTML = document.getElementById('#p1name').value;
+//    document.getElementById('#p1sb').innerHTML = document.getElementById('#name').value;
 //}
 
 
@@ -94,6 +94,7 @@ var GameBoard = function(){
         if( !( self.frames%60 == 0) ){
             return;
         }
+
         this.foods.push(new Food());
     };
 
